@@ -48,42 +48,23 @@ add-apt-repository -y ppa:emoraes25/cid
 
 apt update
 
-test="0install-core
+test="
 android-file-transfer
-autoconf
-automake
-autopoint
-build-essential
-bzip2-doc
-cabextract
-caca-utils
-chafa
 cheese
 cid
 cid-base
 cid-gtk
-cmake
 cpu-checker
 cups-backend-bjnp
 cups-browsed-tests
 cups-tea4cups
 cups-x2go
-davfs2
-debhelper
 deborphan
-dislocker
-fakeroot
-fcitx5-mozc
 finalrd
 flatpak
 fontconfig
 fonts-lato
 fonts-takao-gothic
-fuseiso
-g++
-gawk
-geoip-database
-gettext
 glew-utils
 gnome-calculator
 google-chrome-stable
@@ -94,68 +75,24 @@ gstreamer1.0-vaapi
 guestfs-tools
 gvfs
 imagemagick
-iperf3
-ipxe-qemu-256k-compat-efi-roms
-jp2a
 kmag
 krb5-config
 krb5-k5tls
 ktorrent
 kubuntu-restricted-addons
-libalgorithm-diff-perl
-libalgorithm-diff-xs-perl
-libalgorithm-merge-perl
 libalure1
-libaudio-scrobbler-perl
-libcairo2-dev
 libcanberra-gtk3-module
-libcapi20-3t64
-libcephfs2
 libclutter-1.0-common
 libcogl-common
-libcupsfilters-dev
-libfakeroot
-libglib2.0-dev
-libgmime-3.0-0t64
 libgsl27
 libgstreamer-plugins-bad1.0-0
-libgtk-3-dev
 libgtkglext1
-libguestfs-hfsplus
-libguestfs-reiserfs
-libguestfs-tools
-libguestfs-xfs
-libinih-dev
-libintl-xs-perl
-libjson-glib-dev
-libjs-sphinxdoc
-libjxr-tools
-libk3b-extracodecs
-libltdl-dev
 libmagickcore-6.q16-7-extra
-libmail-sendmail-perl
-libodbc2
 libosmesa6
-libpam-mount-bin
-libpng-tools
-libqt5opengl5-dev
-librpmsign9t64
-libsdl2-mixer-2.0-0
-libsdl-mixer1.2
-libsdl-ttf2.0-0
-libsoup2.4-dev
-libsoup-3.0-dev
-libsystemd-dev
-libtool
 libva-glx2
-libvirt-l10n
-libxml2-dev
 mangohud
-meson
 microsoft-edge-stable
 mozc-utils-gui
-mpg321
-neofetch
 network-manager
 network-manager-openconnect
 nghttp2
@@ -168,20 +105,12 @@ packages-microsoft-prod
 plasma-discover-backend-flatpak
 powershell
 printer-driver-cups-pdf
-python3-dev
-python3-pip
-python3-pygame
-python3-smbc
 qemu-block-extra
 qemu-system-gui
 qemu-system-modules-opengl
 qemu-system-modules-spice
 qemu-system-x86
-qtbase5-dev
-rpm
-rpmlint
 samba-ad-provision
-snap
 qemu-system-gui
 steam-launcher
 steam-libs
@@ -191,7 +120,6 @@ sugar-pippy-activity
 sysbench
 syslinux-common
 thunderbird
-toilet
 ttf-mscorefonts-installer
 unrar
 virt-p2v
@@ -208,9 +136,6 @@ webcamoid
 winehq-stable
 wine-stable-i386
 winetricks
-xterm
-yelp
-zenity
 apt-transport-https
 krb5-doc
 net-tools
@@ -246,12 +171,9 @@ flatpak install -y --system flathub com.github.IsmaelMartinez.teams_for_linux
 
 #systemctl enable --now onedrive
 
-mkdir -p /tmp/winkde
-tar -xzf winux_*.tar.gz -C /tmp/winkde
-chown -R root:root /tmp/winkde
-#git clone https://github.com/dari862/winkde /tmp/winkde
-git clone https://github.com/mjkim0727/Eleven-icon-theme.git /tmp/Eleven-icon-theme
-mv /tmp/Eleven-icon-theme/src/Eleven /tmp/winkde/usr/share/icons/
+git clone https://github.com/dari862/winkde /tmp/winkde
+git clone https://github.com/mjkim0727/Eleven-icon-theme.git /tmp/winkde/Eleven-icon-theme
+mv /tmp/winkde/Eleven-icon-theme/src/Eleven /tmp/winkde/usr/share/icons/
 mv /tmp/winkde/usr/share/icons/Eleven-temp/* /tmp/winkde/usr/share/icons/Eleven
 rm -rdf /tmp/winkde/usr/share/icons/Eleven-temp
 cp -r /tmp/winkde/etc /
@@ -261,8 +183,8 @@ apt install -f -y
 fc-cache -vf
 gtk-update-icon-cache
 # does not work
-#sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=win11/;}' /etc/sddm.conf.d/kde_settings.conf
-#plymouth-set-default-theme win10
-#update-initramfs -u
+sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=win11/;}' /etc/sddm.conf.d/default.conf
+ln -sf /usr/share/plymouth/themes/win10/win10.plymouth /etc/alternatives/default.plymouth
+update-initramfs -u
 
 echo "done done done !!"
