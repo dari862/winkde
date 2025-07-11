@@ -1,3 +1,4 @@
+#!/bin/sh
 set -e
 
 if [ "$(id -u)" -ne 0 ];then
