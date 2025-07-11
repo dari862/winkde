@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment=Windows 10 theme over Linux
+Keywords=Desktop;Workspace;Appearance;Look and Feel;Logout;Lock;Suspend;Shutdown;Hibernate;
+Name=Windows 10 Twilight
+Type=Service
+
+X-KDE-ServiceTypes=Plasma/LookAndFeel
+X-KDE-ParentApp=
+X-KDE-PluginInfo-Author=Windows Linux Software
+X-KDE-PluginInfo-Category=
+X-KDE-PluginInfo-Email=support@windowslinux.org
+X-KDE-PluginInfo-License=GPLv3+
+X-KDE-PluginInfo-Name=org.kde.windows-linux-10-twilight.desktop
+X-KDE-PluginInfo-Version=1.0
+X-KDE-PluginInfo-Website=https://www.windowslinux.org/
+X-Plasma-MainScript=defaults
+
+X-KPackage-Dependencies=kns://plasmoids.knsrc/api.kde-look.org/1719511,kns://plasmoids.knsrc/api.kde-look.org/1100895?linkid=2,kns://plasmoids.knsrc/api.kde-look.org/1545530,kns://colorschemes.knsrc/api.kde-look.org/1562235,kns://icons.knsrc/api.kde-look.org/1724815,kns://icons.knsrc/api.kde-look.org/1166289,kns://plasma-themes.knsrc/api.kde-look.org/1562918,kns://plasma-themes.knsrc/api.kde-look.org/1733170,kns://plasma-themes.knsrc/api.kde-look.org/1757048,kns://wallpaper.knsrc/api.kde-look.org/1563780,kns://wallpaper.knsrc/api.kde-look.org/1719497,kns://sddmtheme.knsrc/api.kde-look.org/1727270

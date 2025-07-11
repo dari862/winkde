@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft Outlook - Online
+Comment=Microsoft Online App Outlook
+Exec=xdg-open 'https://outlook.com/'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_outlook.png
+Categories=Microsoft Online Apps;Office;

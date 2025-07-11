@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft OneNote - Online
+Comment=Microsoft Online App OneNote
+Exec=xdg-open 'http://www.onenote.com/notebooks'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_onenoteonline.png
+Categories=Microsoft Online Apps;Office;

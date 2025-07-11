@@ -1,0 +1,13 @@
+[SETTINGS]
+start_minimized = False
+frameless_window = True
+combined_start_stop_button = True
+show_debug = False
+save_debug = False
+log_rotation_interval = 24
+log_backup_count = 3
+log_file = /tmp/onedrive-gui/onedrive-gui.log
+debug_level = INFO
+client_bin_path = onedrive
+qwebengine_login = False
+

@@ -1,0 +1,6 @@
+# created by KDE Plasma, Wed Oct 23 03:37:03 2024
+#
+include "/usr/share//themes/Windows-11/gtk-2.0/gtkrc"
+
+gtk-theme-name="Windows-11"
+

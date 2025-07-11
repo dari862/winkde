@@ -1,0 +1,34 @@
+[Desktop Action NewTab]
+Exec=konsole -e pwsh --new-tab
+Icon=tab-new
+Name=Open a New Tab
+
+[Desktop Action NewWindow]
+Exec=konsole -e pwsh
+Icon=window-new
+Name=Open a New Window
+
+[Desktop Entry]
+Actions=NewWindow;NewTab;
+Categories=Qt;KDE;System;TerminalEmulator;
+Comment[en_AG]=Command line access
+Comment=Command line access
+Exec=konsole -e pwsh
+GenericName[en_AG]=Microsoft PowerShell
+GenericName=Microsoft PowerShell
+Icon=konsole
+MimeType=
+Name[en_AG]=Microsoft PowerShell
+Name=Microsoft PowerShell
+Path=
+StartupNotify=true
+StartupWMClass=konsole -e pwsh
+Terminal=false
+TerminalOptions=
+TryExec=konsole
+Type=Application
+X-DBUS-StartupType=Unique
+X-DocPath=konsole/index.html
+X-KDE-AuthorizeAction=shell_access
+X-KDE-SubstituteUID=false
+X-KDE-Username=

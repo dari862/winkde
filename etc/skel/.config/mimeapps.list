@@ -1,0 +1,12 @@
+[Added Associations]
+inode/directory=org.kde.dolphin.desktop;
+x-scheme-handler/geo=wheelmap-geo-handler.desktop;
+x-scheme-handler/http=microsoft-edge.desktop;google-chrome.desktop;
+x-scheme-handler/https=microsoft-edge.desktop;google-chrome.desktop;
+
+[Default Applications]
+inode/directory=org.kde.dolphin.desktop;
+text/html=google-microsoft-edge.desktop
+x-scheme-handler/geo=wheelmap-geo-handler.desktop;
+x-scheme-handler/http=microsoft-edge.desktop;
+x-scheme-handler/https=microsoft-edge.desktop;

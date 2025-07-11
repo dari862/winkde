@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Office;WordProcessor;Spreadsheet;Presentation;
+Comment[en_US]=Edit office documents
+Comment=Edit office documents
+Exec=/usr/bin/onlyoffice-desktopeditors --new:word
+GenericName[en_US]=Document Editor
+GenericName=Document Editor
+Icon=libreoffice-writer
+MimeType=
+Name[en_US]=OnlyOffice Word
+Name=OnlyOffice Word
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Office;WordProcessor;Spreadsheet;Presentation;
+Comment[en_US]=Edit office documents
+Comment=Edit office documents
+Exec=/usr/bin/onlyoffice-desktopeditors --new:cell
+GenericName[en_US]=Spreadsheet Editor
+GenericName=Spreadsheet Editor
+Icon=libreoffice-calc
+MimeType=
+Name[en_US]=OnlyOffice Excel
+Name=OnlyOffice Excel
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

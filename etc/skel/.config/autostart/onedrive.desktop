@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+GenericName=System Update
+Exec=onedrive --monitor
+Comment=Onedrive
+#Icon=calamares
+Icon=folder-onedrive
+Terminal=false
+StartupNotify=true
+Categories=Application;Network;Email;
+Keywords=onedrive;cloud;

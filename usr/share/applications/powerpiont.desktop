@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft PowerPoint - Online
+Comment=Microsoft Online App PowerPoint
+Exec=xdg-open 'https://office.live.com/start/PowerPoint.aspx'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_powerpointonline.png
+Categories=Microsoft Online Apps;Office;

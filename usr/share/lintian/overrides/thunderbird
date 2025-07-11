@@ -1,0 +1,3 @@
+thunderbird binary: embedded-library usr/lib/thunderbird/libxul.so: libjpeg
+thunderbird binary: embedded-library usr/lib/thunderbird/libmozsqlite3.so: sqlite
+thunderbird binary: image-file-in-usr-lib

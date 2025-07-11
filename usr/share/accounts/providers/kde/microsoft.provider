@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: 2024 Bernardo Gomes Negri<b.gomes.negri@gmail.com>
+
+SPDX-License-Identifier: GPL-2.0-or-later
+-->
+
+<provider id="microsoft">
+  <name>Microsoft</name>
+
+  <description>Includes Microsoft OneDrive</description>
+  <icon>folder-onedrive</icon>
+  <translations>kaccounts-providers</translations>
+  <domains>.*microsoftonline\.com|.*live\.com|.*microsoft\.com</domains>
+
+  <template>
+    <group name="auth">
+      <setting name="method">oauth2</setting>
+      <setting name="mechanism">web_server</setting>
+      <group name="oauth2">
+        <group name="web_server">
+          <setting name="Host">login.microsoftonline.com</setting>
+          <setting name="AuthPath">common/oauth2/v2.0/authorize?prompt=select_account</setting>
+          <setting name="TokenPath">common/oauth2/v2.0/token</setting>
+          <setting name="RedirectUri">goa-oauth2://localhost/8ef61e06-9fd5-49af-9b63-6983aede4213</setting>
+
+          <setting name="ResponseType">code</setting>
+          <setting type="as" name="Scope">[
+              'files.readwrite.all',
+              'offline_access'
+          ]</setting>
+          <setting type="as" name="AllowedSchemes">['https']</setting>
+          <setting name="ClientId">8ef61e06-9fd5-49af-9b63-6983aede4213</setting>
+          <setting type="b" name="ForceClientAuthViaRequestBody">true</setting>
+        </group>
+      </group>
+    </group>
+  </template>
+</provider>

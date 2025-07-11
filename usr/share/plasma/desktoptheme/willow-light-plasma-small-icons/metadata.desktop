@@ -1,0 +1,44 @@
+[ContrastEffect]
+
+enabled=true
+
+# tamer version of below with less banding
+# fafafa 79% opacity
+# contrast=.25
+# intensity=1.35
+# saturation=4
+
+# ffffff 73%
+# my personal presets, may contain severe banding
+# contrast=.25
+# intensity=1.4
+# saturation=5
+
+# new material, darker than I prefer on blacks though
+# fafafa 80%
+contrast=.65
+intensity=1.15
+saturation=2.8
+
+# old values
+# ffffff 85%
+# contrast=1.0
+# intensity=1.0
+# saturation=2.0
+
+[Desktop Entry]
+Name=Willow Light Small Icons
+Comment=Willow with smaller panel icons.
+X-KDE-PluginInfo-Author=doncsugar
+X-KDE-PluginInfo-Category=
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-EnabledByDefault=true
+X-KDE-PluginInfo-License=GPLv3
+X-KDE-PluginInfo-Name=willow-light-plasma-small-icons
+X-KDE-PluginInfo-Version=.1
+X-KDE-PluginInfo-Website=
+X-Plasma-API=5.0
+
+[AdaptiveTransparency]
+enabled=true

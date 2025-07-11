@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft Word - Online
+Comment=Microsoft Online App Word
+Exec=xdg-open 'https://office.live.com/start/Word.aspx'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_wordonline.png
+Categories=Microsoft Online Apps;Office;

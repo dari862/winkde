@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft OneDrive - Online
+Comment=Microsoft Online App OneDrive
+Exec=xdg-open 'https://onedrive.live.com'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_onedrive.png
+Categories=Microsoft Online Apps;Office;

@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=Office;WordProcessor;Spreadsheet;Presentation;
+Comment[en_US]=Edit office documents
+Comment=Edit office documents
+Exec=/usr/bin/onlyoffice-desktopeditors --new:slide
+GenericName[en_US]=Presentation Editor
+GenericName=Presentation Editor
+Icon=libreoffice-impress
+MimeType=
+Name[en_US]=OnlyOffice PowerPoint
+Name=OnlyOffice PowerPoint
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+Version=1.0
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

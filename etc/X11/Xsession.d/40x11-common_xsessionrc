@@ -1,0 +1,18 @@
+# This file is sourced by Xsession(5), not executed.
+
+
+#User Avatar
+rm /usr/share/sddm/themes/breeze/images/.face.icon
+rm /home/$USER/.face
+rm /home/$USER/.face.icon
+
+ln -s /var/lib/AccountsService/icons/$USER /usr/share/sddm/themes/breeze/images/.face.icon
+ln -s /var/lib/AccountsService/icons/$USER /home/$USER/.face
+ln -s /var/lib/AccountsService/icons/$USER /home/$USER/.face.icon
+
+
+#Source user defined xsessionrc (locales and other environment variables)
+if [ -r "$USERXSESSIONRC" ]; then
+  . "$USERXSESSIONRC"
+fi
+

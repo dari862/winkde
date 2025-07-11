@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft Calendar - Online
+Comment=Microsoft Online App Calendar
+Exec=xdg-open 'https://calendar.live.com/'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_calendar.png
+Categories=Microsoft Online Apps;Office;

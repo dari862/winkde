@@ -1,0 +1,41 @@
+MenuBar=Disabled
+
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
+
+[DetailsMode]
+PreviewSize=16
+
+[General]
+OpenNewTabAfterLastTab=true
+RememberOpenedTabs=false
+ShowZoomSlider=false
+Version=202
+ViewPropsTimestamp=2024,10,21,20,33,15.535
+
+[IconsMode]
+PreviewSize=48
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=16
+Recent Files[$e]=mail-reply-sender-symbolic.svg,file:///usr/share/icons/breeze/actions/symbolic/mail-reply-sender-symbolic.svg
+Recent URLs[$e]=file:///usr/share/icons/,file:$HOME/,file:///usr/share/icons/Eleven/,file:///usr/share/icons/breeze/actions/symbolic/
+detailViewIconSize=16
+
+[KPropertiesDialog]
+1920x1080 screen: Height=631
+1920x1080 screen: Width=419
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[PlacesPanel]
+IconSize=16
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mltpreview,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
+
+[Search]
+What=Content

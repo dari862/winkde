@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Microsoft Excel - Online
+Comment=Microsoft Online App Excel
+Exec=xdg-open 'https://office.live.com/start/Excel.aspx'
+Terminal=false
+Type=Application
+StartupNotify=true
+Icon=/usr/share/icons/microsoftonline/0_excelonline.png
+Categories=Microsoft Online Apps;Office;

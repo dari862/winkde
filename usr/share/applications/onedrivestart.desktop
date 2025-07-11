@@ -1,0 +1,20 @@
+[Desktop Entry]
+Categories=Application;Network;Email;
+Comment[en_US]=
+Comment=
+Encoding=UTF-8
+Exec=one-drive-start %u
+GenericName[en_US]=
+GenericName=
+Icon=folder-onedrive
+Keywords=onedrive;cloud;
+MimeType=
+Name=Onedrive
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+X-MultipleArgs=false

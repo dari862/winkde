@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+SPDX-FileCopyrightText: 2017 Elvis Angelaccio
+SPDX-FileCopyrightText: 2024 Bernardo Gomes Negri <b.gomes.negri@gmail.com>
+
+SPDX-License-Identifier: GPL-2.0-or-later
+-->
+
+<service id="microsoft-onedrive">
+  <type>microsoft-onedrive</type>
+  <_name>OneDrive</_name>
+  <_description>Integrate your Microsoft OneDrive documents</_description>
+  <icon>im-msn</icon>
+  <provider>microsoft</provider>
+  <translations>kaccounts-providers</translations>
+</service>
+
