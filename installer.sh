@@ -1,7 +1,6 @@
-#!/bin/sh
 set -e
 
-if [ "$EUID" -ne 0 ];then
+if [ "$(id -u)" -ne 0 ];then
     echo "Please run as root"
     exit 1
 fi
@@ -10,19 +9,19 @@ mkdir -pm755 /etc/apt/keyrings
 mkdir -p /usr/share/keyrings
 dpkg --add-architecture i386
 
-wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o /usr/share/keyrings/microsoft.gpg
-cp -r /usr/share/keyrings/microsoft.gpg /usr/share/keyrings/microsoft-prod.gpg
-cp -r /usr/share/keyrings/microsoft.gpg /etc/apt/keyrings
+wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /usr/share/keyrings/microsoft.gpg > /dev/null
+cp -rf /usr/share/keyrings/microsoft.gpg /usr/share/keyrings/microsoft-prod.gpg
+cp -rf /usr/share/keyrings/microsoft.gpg /etc/apt/keyrings
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge/ stable main" | tee /etc/apt/sources.list.d/microsoft-edge.list
 echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/24.04/prod noble main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/ms-teams stable main" | tee /etc/apt/sources.list.d/teams.list
-wget -q -O - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/Release.key | gpg --dearmor -o /usr/share/keyrings/obs-onedrive.gpg
+wget -q -O - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/Release.key | gpg --dearmor | tee /usr/share/keyrings/obs-onedrive.gpg > /dev/null
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/ ./" | tee /etc/apt/sources.list.d/onedrive.list
 
-wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-linux-signing-key.gpg
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | tee /usr/share/keyrings/google-linux-signing-key.gpg > /dev/null
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
 
-wget -q -O - https://download.onlyoffice.com/GPG-KEY-ONLYOFFICE | gpg --dearmor -o /usr/share/keyrings/onlyoffice.gpg
+wget -q -O - https://download.onlyoffice.com/GPG-KEY-ONLYOFFICE | gpg --dearmor | tee /usr/share/keyrings/onlyoffice.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main" | tee /etc/apt/sources.list.d/onlyoffice.list
 
 wget -q -O - http://repo.steampowered.com/steam/archive/stable/steam.gpg | tee /usr/share/keyrings/steam.gpg > /dev/null
@@ -31,8 +30,8 @@ echo "deb-src [arch=amd64,i386 signed-by=/usr/share/keyrings/steam.gpg] https://
 echo "#deb [arch=amd64,i386 signed-by=/usr/share/keyrings/steam.gpg] https://repo.steampowered.com/steam/ beta steam" | tee /etc/apt/sources.list.d/steam-beta.list
 echo "#deb-src [arch=amd64,i386 signed-by=/usr/share/keyrings/steam.gpg] https://repo.steampowered.com/steam/ beta steam" | tee -a /etc/apt/sources.list.d/steam-beta.list
 
-wget -O - https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor -o /etc/apt/keyrings/winehq-archive.key -
-wget -O /etc/apt/sources.list.d/winehq-noble.sources https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources
+wget -O - https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | tee /etc/apt/keyrings/winehq-archive.key > /dev/null
+wget -O - https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources | tee /etc/apt/sources.list.d/winehq-noble.sources > /dev/null
 
 wget -qO - https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/3bf863cc.pub | gpg --dearmor | tee /usr/share/keyrings/nvidia-drivers.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/ /" | tee /etc/apt/sources.list.d/nvidia-drivers.list
