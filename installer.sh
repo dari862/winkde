@@ -169,7 +169,23 @@ apt install -f -y
 fc-cache -vf
 gtk-update-icon-cache
 
-sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=win11/;}' /etc/sddm.conf.d/default.conf
+tee /etc/sddm.conf.d/kde_settings.conf <<- 'EOF' >/dev/null 2>&1
+[Autologin]
+Relogin=false
+Session=
+User=
+
+[General]
+HaltCommand=
+RebootCommand=
+
+[Theme]
+Current=win11
+
+[Users]
+MaximumUid=60000
+MinimumUid=1000
+EOF
 ln -sf /usr/share/plymouth/themes/win10/win10.plymouth /etc/alternatives/default.plymouth
 update-initramfs -u
 
