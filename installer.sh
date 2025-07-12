@@ -12,20 +12,21 @@ dpkg --add-architecture i386
 . /etc/os-release
 if [ "$ID" = "debian" ];then
     taleifID="Debian"
+    VERSION_ID_NO_DOT="$VERSION_ID"
 elif [ "$ID" = "ubuntu" ];then
     taleifID="xUbuntu"
     package2install="kubuntu-restricted-addons finalrd"
+    VERSION_ID_NO_DOT="$(echo "$VERSION_ID"| sed 's/.//g' )"
 else
     echo "not supported distro"
     exit 1
 fi
-VERSION_ID_NO_DOT="$(echo "$VERSION_ID"| sed 's/.//g' )"
 
 wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /usr/share/keyrings/microsoft.gpg > /dev/null
 cp -rf /usr/share/keyrings/microsoft.gpg /usr/share/keyrings/microsoft-prod.gpg
 cp -rf /usr/share/keyrings/microsoft.gpg /etc/apt/keyrings
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge/ stable main" | tee /etc/apt/sources.list.d/microsoft-edge.list
-echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/$ID/$VERSION_ID/prod noble main" | tee /etc/apt/sources.list.d/microsoft-prod.list
+echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/$ID/$VERSION_ID/prod ${VERSION_CODENAME} main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/ms-teams stable main" | tee /etc/apt/sources.list.d/teams.list
 wget -q -O - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/${taleifID}_${VERSION_ID}/Release.key | gpg --dearmor | tee /usr/share/keyrings/obs-onedrive.gpg > /dev/null
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/${taleifID}_${VERSION_ID}/ ./" | tee /etc/apt/sources.list.d/onedrive.list
