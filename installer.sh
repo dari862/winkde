@@ -34,8 +34,8 @@ echo "deb [arch=amd64 signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://do
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | tee /usr/share/keyrings/google-linux-signing-key.gpg > /dev/null
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
 
-wget -q -O - https://download.onlyoffice.com/GPG-KEY-ONLYOFFICE | gpg --dearmor | tee /usr/share/keyrings/onlyoffice.gpg > /dev/null
-echo "deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main" | tee /etc/apt/sources.list.d/onlyoffice.list
+wget -q -O - https://download.onlyoffice.com/GPG-KEY-ONLYOFFICE | gpg --dearmor | tee /usr/share/keyrings/onlyoffice.gpg >/dev/null
+echo "deb [signed-by=/usr/share/keyrings/onlyoffice.gpg] https://download.onlyoffice.com/repo/debian squeeze main" | tee /etc/apt/sources.list.d/onlyoffice.list > /dev/null
 
 wget -q -O - http://repo.steampowered.com/steam/archive/stable/steam.gpg | tee /usr/share/keyrings/steam.gpg > /dev/null
 echo "deb [arch=amd64,i386 signed-by=/usr/share/keyrings/steam.gpg] https://repo.steampowered.com/steam/ stable steam" | tee /etc/apt/sources.list.d/steam-stable.list
@@ -66,6 +66,7 @@ EOF
 apt update
 
 package2install="$package2install
+onlyoffice-desktopeditors
 android-file-transfer
 cheese
 cpu-checker
@@ -143,30 +144,14 @@ net-tools
 policykit-1
 rar
 gamemode
+hardinfo
 "
 
 apt install -y $package2install
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-# does not exist
-###########################
-# 4kvideodownloaderplus
-# hardinfo2 only hardinfo exist
-# heroic
-# onlyoffice
-# teams
-# steam:i386
-# steam-installer
-###########################
-apt install -y hardinfo
-
 flatpak install -y --system flathub com.heroicgameslauncher.hgl
-
-wget https://dl.4kdownload.com/app/4kvideodownloaderplus_1.4.2-1_amd64.deb
-dpkg -i ./4kvideodownloaderplus_1.4.2-1_amd64.deb || :
-
-wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
-dpkg -i ./onlyoffice-desktopeditors_amd64.deb || :
+flatpak install -y --system flathub com.github.tchx84.Flatseal
 
 flatpak install -y --system flathub com.github.IsmaelMartinez.teams_for_linux
 
@@ -183,7 +168,7 @@ cp -r /tmp/winkde/usr /
 apt install -f -y
 fc-cache -vf
 gtk-update-icon-cache
-# does not work
+
 sed -i '/^\[Theme\]/,/^\[/{s/^Current=.*/Current=win11/;}' /etc/sddm.conf.d/default.conf
 ln -sf /usr/share/plymouth/themes/win10/win10.plymouth /etc/alternatives/default.plymouth
 update-initramfs -u
