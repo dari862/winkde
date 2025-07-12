@@ -73,7 +73,6 @@ cups-backend-bjnp
 cups-tea4cups
 cups-x2go
 deborphan
-finalrd
 flatpak
 fontconfig
 fonts-lato
