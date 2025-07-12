@@ -9,15 +9,26 @@ fi
 mkdir -pm755 /etc/apt/keyrings
 mkdir -p /usr/share/keyrings
 dpkg --add-architecture i386
+. /etc/os-release
+if [ "$ID" = "debian" ];then
+    taleifID="Debian"
+elif [ "$ID" = "ubuntu" ];then
+    taleifID="xUbuntu"
+    package2install="kubuntu-restricted-addons finalrd"
+else
+    echo "not supported distro"
+    exit 1
+fi
+VERSION_ID_NO_DOT="$(echo "$VERSION_ID"| sed 's/.//g' )"
 
 wget -q -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /usr/share/keyrings/microsoft.gpg > /dev/null
 cp -rf /usr/share/keyrings/microsoft.gpg /usr/share/keyrings/microsoft-prod.gpg
 cp -rf /usr/share/keyrings/microsoft.gpg /etc/apt/keyrings
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge/ stable main" | tee /etc/apt/sources.list.d/microsoft-edge.list
-echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/ubuntu/24.04/prod noble main" | tee /etc/apt/sources.list.d/microsoft-prod.list
+echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/$ID/$VERSION_ID/prod noble main" | tee /etc/apt/sources.list.d/microsoft-prod.list
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/ms-teams stable main" | tee /etc/apt/sources.list.d/teams.list
-wget -q -O - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/Release.key | gpg --dearmor | tee /usr/share/keyrings/obs-onedrive.gpg > /dev/null
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/xUbuntu_24.04/ ./" | tee /etc/apt/sources.list.d/onedrive.list
+wget -q -O - https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/${taleifID}_${VERSION_ID}/Release.key | gpg --dearmor | tee /usr/share/keyrings/obs-onedrive.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/obs-onedrive.gpg] https://download.opensuse.org/repositories/home:/npreining:/debian-ubuntu-onedrive/${taleifID}_${VERSION_ID}/ ./" | tee /etc/apt/sources.list.d/onedrive.list
 
 wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor | tee /usr/share/keyrings/google-linux-signing-key.gpg > /dev/null
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-key.gpg] https://dl.google.com/linux/chrome/deb/ stable main" | tee /etc/apt/sources.list.d/google-chrome.list
@@ -32,31 +43,32 @@ echo "#deb [arch=amd64,i386 signed-by=/usr/share/keyrings/steam.gpg] https://rep
 echo "#deb-src [arch=amd64,i386 signed-by=/usr/share/keyrings/steam.gpg] https://repo.steampowered.com/steam/ beta steam" | tee -a /etc/apt/sources.list.d/steam-beta.list
 
 wget -O - https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor | tee /etc/apt/keyrings/winehq-archive.key > /dev/null
-wget -O - https://dl.winehq.org/wine-builds/ubuntu/dists/noble/winehq-noble.sources | tee /etc/apt/sources.list.d/winehq-noble.sources > /dev/null
+wget -O - https://dl.winehq.org/wine-builds/$ID/dists/$VERSION_CODENAME/winehq-${VERSION_CODENAME}.sources | tee /etc/apt/sources.list.d/winehq-${VERSION_CODENAME}.sources > /dev/null
 
-wget -qO - https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/3bf863cc.pub | gpg --dearmor | tee /usr/share/keyrings/nvidia-drivers.gpg > /dev/null
-echo "deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/ /" | tee /etc/apt/sources.list.d/nvidia-drivers.list
+wget -qO - https://developer.download.nvidia.com/compute/cuda/repos/${ID}${VERSION_ID_NO_DOT}/x86_64/3bf863cc.pub | gpg --dearmor | tee /usr/share/keyrings/nvidia-drivers.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/nvidia-drivers.gpg] https://developer.download.nvidia.com/compute/cuda/repos/${ID}${VERSION_ID_NO_DOT}/x86_64/ /" | tee /etc/apt/sources.list.d/nvidia-drivers.list
 
-add-apt-repository -y ppa:mozillateam/ppa
-tee /etc/apt/preferences.d/mozillateamppa << 'EOF' >/dev/null 2>&1
-Package: thunderbird*
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
+if [ "$ID" = "debian" ];then
+# Backup original sources.list
+    cp -r /etc/apt/sources.list /etc/apt/sources.list.bak
+    sed -i -E "s|^(deb.*${VERSION_CODENAME} main)( .*)?$|\1 contrib non-free non-free-firmware|g" /etc/apt/sources.list
+elif [ "$ID" = "ubuntu" ];then
+    add-apt-repository -y ppa:graphics-drivers/ppa
+    add-apt-repository -y ppa:mozillateam/ppa
+fi
+tee /etc/apt/preferences.d/mozillateamppa <<- 'EOF' >/dev/null 2>&1
+    Package: thunderbird*
+    Pin: release o=LP-PPA-mozillateam
+    Pin-Priority: 1001
 EOF
-add-apt-repository -y ppa:graphics-drivers/ppa
-add-apt-repository -y ppa:emoraes25/cid
 
 apt update
 
-test="
+package2install="$package2install
 android-file-transfer
 cheese
-cid
-cid-base
-cid-gtk
 cpu-checker
 cups-backend-bjnp
-cups-browsed-tests
 cups-tea4cups
 cups-x2go
 deborphan
@@ -76,10 +88,7 @@ guestfs-tools
 gvfs
 imagemagick
 kmag
-krb5-config
-krb5-k5tls
 ktorrent
-kubuntu-restricted-addons
 libalure1
 libcanberra-gtk3-module
 libclutter-1.0-common
@@ -87,7 +96,7 @@ libcogl-common
 libgsl27
 libgstreamer-plugins-bad1.0-0
 libgtkglext1
-libmagickcore-6.q16-7-extra
+imagemagick
 libosmesa6
 libva-glx2
 mangohud
@@ -105,13 +114,7 @@ packages-microsoft-prod
 plasma-discover-backend-flatpak
 powershell
 printer-driver-cups-pdf
-qemu-block-extra
-qemu-system-gui
-qemu-system-modules-opengl
-qemu-system-modules-spice
-qemu-system-x86
 samba-ad-provision
-qemu-system-gui
 steam-launcher
 steam-libs
 steam-libs-amd64
@@ -136,15 +139,13 @@ webcamoid
 winehq-stable
 wine-stable-i386
 winetricks
-apt-transport-https
-krb5-doc
 net-tools
 policykit-1
 rar
 gamemode
 "
 
-apt install -y $test
+apt install -y $package2install
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 # does not exist
