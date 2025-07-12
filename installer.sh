@@ -16,7 +16,7 @@ if [ "$ID" = "debian" ];then
 elif [ "$ID" = "ubuntu" ];then
     taleifID="xUbuntu"
     package2install="kubuntu-restricted-addons finalrd"
-    VERSION_ID_NO_DOT="$(echo "$VERSION_ID"| sed 's/.//g' )"
+    VERSION_ID_NO_DOT="$(echo "$VERSION_ID" | tr -d '.')"
 else
     echo "not supported distro"
     exit 1
